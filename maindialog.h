@@ -18,7 +18,7 @@ public:
     const int max_count = 100;//一道题多少秒
     int time_count;
 
-    int max_questions = 10;// total道题
+    int max_questions = 15;// total道题
     int count_question = 0;
 
     int ii = 4;

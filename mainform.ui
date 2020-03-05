@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>120</y>
+     <y>100</y>
      <width>91</width>
      <height>41</height>
     </rect>
@@ -92,6 +92,19 @@
    <column/>
    <column/>
    <column/>
+  </widget>
+  <widget class="QPushButton" name="updateResult">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>更新成绩</string>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -30,14 +30,16 @@ SOURCES += \
     sql.cpp \
     dialog.cpp \
     maindialog.cpp \
-    mainform.cpp
+    mainform.cpp \
+    adaptive_questin.cpp
 
 HEADERS += \
         mainwindow.h \
     sql.h \
     dialog.h \
     maindialog.h \
-    mainform.h
+    mainform.h \
+    adaptive_questin.h
 
 FORMS += \
         mainwindow.ui \

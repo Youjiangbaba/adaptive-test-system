@@ -24,7 +24,13 @@ private slots:
 
     void updateTime();
 
+    void updateItem();
+
+    void on_updateResult_clicked();
+
 private:
+
+
     Ui::MainForm *ui;
 
     MainDialog *maindialog;

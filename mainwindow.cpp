@@ -1,7 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
 
+#include "sql.h"
 
+QString this_usrname = "xx";
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -30,12 +33,26 @@ void MainWindow::on_registerPB_clicked()
 
 void MainWindow::on_login_clicked()
 {
-//    if ((ui->lusrtext->text() == "123")&&(ui->lpwdtext->text() == "123")){
-        mm = new MainForm();
-        mm ->show();
-        this->close();
-        delete ui;
-//    }
+    int index = usrs.indexOf(ui->lusrtext->text());
+    if (index == -1){
+        QMessageBox::critical(NULL, "critical message" , "用户名不存在！", QMessageBox::Ok );
+    }
+    else {
+        if (ui->lpwdtext->text() == pwds[index]){
+            this_usrname = ui->lusrtext->text();
+
+            //创建该用户的表格
+            StudentDatabase = sql.student_table(StudentDatabase,this_usrname);
+
+            mm = new MainForm();
+            mm ->show();
+            this->close();
+            delete ui;
+        }
+        else {
+            QMessageBox::critical(NULL, "critical message" , "密码错误，请重新输入！", QMessageBox::Ok );
+        }
+    }
 }
 
 void MainWindow::on_quit_clicked()

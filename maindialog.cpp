@@ -5,6 +5,10 @@
 #include <QString>
 #include <QMessageBox>
 #include<QThread>
+#include<iostream>
+#include "sql.h"
+
+std::vector<int> your_answer(15);
 
 MainDialog::MainDialog(QWidget *parent) :
     QDialog(parent),
@@ -64,10 +68,15 @@ void MainDialog::count_time()
         count_question = 1;
         if (ii == 0){
             //frist question
-            ui->textquestion_A->setText(QString::number(count_question,10));
-            ui->textquestion_B->setText(QString::number(count_question,10));
-            ui->textquestion_C->setText(QString::number(count_question,10));
-            ui->textquestion_D->setText(QString::number(count_question,10));
+            ui->textquestion->setText(question[count_question-1]);
+            ui->textquestion_A->setText(re_a[count_question-1]);
+            ui->textquestion_B->setText(re_b[count_question-1]);
+            ui->textquestion_C->setText(re_c[count_question-1]);
+            ui->textquestion_D->setText(re_d[count_question-1]);
+            status = QString("进度：%1 / %2")
+                            .arg(QString::number(count_question,10)).arg(QString::number(10,10));
+            ui->labelprocess->setText(status);
+
             ui->nextpb->setEnabled(1);
             ui->completepb->setEnabled(1);
         }
@@ -83,12 +92,12 @@ void MainDialog::count_time()
             on_nextpb_clicked();
         }
     }
-
 }
 
 
 void MainDialog::on_nextpb_clicked()
 {
+    static int count = 0;
 
     count_question ++;
 
@@ -101,10 +110,16 @@ void MainDialog::on_nextpb_clicked()
 
     ui->labelprocess->setText(status);
 
-    ui->textquestion_A->setText(count_str);
-    ui->textquestion_B->setText(count_str);
-    ui->textquestion_C->setText(count_str);
-    ui->textquestion_D->setText(count_str);
+    //Questions_Index(15);
+
+    ui->textquestion->setText(question[count_question-1]);
+    ui->textquestion_A->setText(re_a[count_question-1]);
+    ui->textquestion_B->setText(re_b[count_question-1]);
+    ui->textquestion_C->setText(re_c[count_question-1]);
+    ui->textquestion_D->setText(re_d[count_question-1]);
+    count ++;
+    if (count >= max_questions)
+        count = 0;
 
     if (count_question == max_questions){
         ui->nextpb->setEnabled(0);
@@ -113,8 +128,6 @@ void MainDialog::on_nextpb_clicked()
 
 void MainDialog::on_completepb_clicked()
 {
-    ui->nextpb->setEnabled(1);
-    time1 ->stop();
 
     if(count_question < max_questions){
         QString count_str = QString::number(count_question,10);
@@ -128,14 +141,17 @@ void MainDialog::on_completepb_clicked()
         {
             QMessageBox::information(0 , "information message" ,"6 points", QMessageBox::Ok);
             this->reject();
+            time1 ->stop();
+            ui->nextpb->setEnabled(1);
             ii = 4;
         }
 
     }
     else{
-        QMessageBox::information(0 , "information message" ,"10 points", QMessageBox::Ok);
+        QMessageBox::information(NULL , "information message" ,"10 points", QMessageBox::Ok);
         this->reject();
+        time1 ->stop();
+        ui->nextpb->setEnabled(1);
         ii = 4;
     }
-
 }
