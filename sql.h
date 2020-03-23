@@ -18,6 +18,8 @@ extern QString this_usrname;
 extern QList<QString> question,re_a,re_b,re_c,re_d;
 extern std::vector<int> re_right,classes;
 
+extern std::vector<int> out_question_num;
+
 extern QString int2qstr(int _int);
 extern int qstr2int(QString qstr);
 
@@ -38,8 +40,6 @@ public:
     QSqlDatabase usrmanage_table(QSqlDatabase db,QString student_name=USRMANAGE_TABLE);
     void read_usrspwds(QSqlDatabase db);
     QSqlDatabase Write_usrmanage(QSqlDatabase db,QString usr,QString pwd);
-
-
 
 
 private:

@@ -25,8 +25,8 @@ int main(int argc, char *argv[])
     sql.read_usrspwds(StudentDatabase);
 
 
-//    int scores[] = {90,50,60};
-//    adaptive_questin(scores);
+////    int scores[] = {90,50,60};
+////    adaptive_questin(scores);
 
 
     QApplication a(argc, argv);

@@ -2,7 +2,7 @@
 #define MAINDIALOG_H
 
 #include <QDialog>
-
+#include<QButtonGroup>
 namespace Ui {
 class MainDialog;
 }
@@ -30,11 +30,15 @@ private slots:
 
     void count_time();
 
+    void groupbutton_init();
+    int get_groupbutton();
+
 private:
     Ui::MainDialog *ui;
 
     QTimer *time1;
 
+    QButtonGroup *buttonGroup;
 
 };
 

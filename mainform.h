@@ -17,6 +17,8 @@ public:
     explicit MainForm(QWidget *parent = nullptr);
     ~MainForm();
 
+
+
 private slots:
     void on_startanswerpd_clicked();
 
@@ -24,12 +26,11 @@ private slots:
 
     void updateTime();
 
-    void updateItem();
-
     void on_updateResult_clicked();
 
 private:
 
+     void updateItem();
 
     Ui::MainForm *ui;
 
